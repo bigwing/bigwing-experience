@@ -2,10 +2,10 @@
 /**
  * REST API functionality
  *
- * @package  10up-experience
+ * @package  bigwing-experience
  */
 
-namespace tenup;
+namespace bigwing;
 
 /**
  * Return a 403 status and corresponding error for unauthed REST API access.
@@ -21,10 +21,10 @@ function restrict_rest_api( $result ) {
 		return $result;
 	}
 
-	$restrict = get_option( 'tenup_restrict_rest_api', 'all' );
+	$restrict = get_option( 'bigwing_restrict_rest_api', 'all' );
 
 	if ( 'all' === $restrict && ! user_can_access_rest_api() ) {
-		return new \WP_Error( 'rest_api_restricted', __( 'Authentication Required', 'tenup' ), array( 'status' => rest_authorization_required_code() ) );
+		return new \WP_Error( 'rest_api_restricted', __( 'Authentication Required', 'bigwing' ), array( 'status' => rest_authorization_required_code() ) );
 	}
 
 	return $result;
@@ -39,7 +39,7 @@ add_filter( 'rest_authentication_errors', __NAMESPACE__ . '\restrict_rest_api', 
  * @return array
  */
 function restrict_user_endpoints( $endpoints ) {
-	$restrict = get_option( 'tenup_restrict_rest_api', 'all' );
+	$restrict = get_option( 'bigwing_restrict_rest_api', 'all' );
 
 	if ( 'none' === $restrict ) {
 		return $endpoints;
@@ -74,8 +74,8 @@ function restrict_rest_api_setting() {
 		'sanitize_callback' => __NAMESPACE__ . '\validate_restrict_rest_api_setting',
 	);
 
-	register_setting( 'reading', 'tenup_restrict_rest_api', $settings_args );
-	add_settings_field( 'tenup_restrict_rest_api', __( 'REST API Availability', 'tenup' ), __NAMESPACE__ . '\restrict_rest_api_ui', 'reading' );
+	register_setting( 'reading', 'bigwing_restrict_rest_api', $settings_args );
+	add_settings_field( 'bigwing_restrict_rest_api', __( 'REST API Availability', 'bigwing' ), __NAMESPACE__ . '\restrict_rest_api_ui', 'reading' );
 }
 add_action( 'admin_init', __NAMESPACE__ . '\restrict_rest_api_setting' );
 
@@ -85,29 +85,29 @@ add_action( 'admin_init', __NAMESPACE__ . '\restrict_rest_api_setting' );
  * @return void
  */
 function restrict_rest_api_ui() {
-	$restrict = get_option( 'tenup_restrict_rest_api', 'all' );
+	$restrict = get_option( 'bigwing_restrict_rest_api', 'all' );
 	?>
 <fieldset>
-	<legend class="screen-reader-text"><?php esc_html_e( 'REST API Availability', 'tenup' ); ?></legend>
+	<legend class="screen-reader-text"><?php esc_html_e( 'REST API Availability', 'bigwing' ); ?></legend>
 	<p><label for="restrict-rest-api-all">
-		<input id="restrict-rest-api-all" name="tenup_restrict_rest_api" type="radio" value="all"<?php checked( $restrict, 'all' ); ?> />
-		<?php esc_html_e( 'Restrict all access to authenticated users', 'tenup' ); ?>
+		<input id="restrict-rest-api-all" name="bigwing_restrict_rest_api" type="radio" value="all"<?php checked( $restrict, 'all' ); ?> />
+		<?php esc_html_e( 'Restrict all access to authenticated users', 'bigwing' ); ?>
 	</label></p>
 	<p><label for="restrict-rest-api-users">
-		<input id="restrict-rest-api-users" name="tenup_restrict_rest_api" type="radio" value="users"<?php checked( $restrict, 'users' ); ?> />
+		<input id="restrict-rest-api-users" name="bigwing_restrict_rest_api" type="radio" value="users"<?php checked( $restrict, 'users' ); ?> />
 		<?php
 			echo wp_kses_post(
 				sprintf(
 					// translators: %s is a link to the developer reference for the users endpoint
-					__( "Restrict access to the <code><a href='%s'>users</a></code> endpoint to authenticated users", 'tenup' ),
+					__( "Restrict access to the <code><a href='%s'>users</a></code> endpoint to authenticated users", 'bigwing' ),
 					esc_url( 'https://developer.wordpress.org/rest-api/reference/users/' )
 				)
 			);
 		?>
 	</label></p>
 	<p><label for="restrict-rest-api-n">
-		<input id="restrict-rest-api-n" name="tenup_restrict_rest_api" type="radio" value="none"<?php checked( $restrict, 'none' ); ?> />
-		<?php esc_html_e( 'Publicly accessible', 'tenup' ); ?>
+		<input id="restrict-rest-api-n" name="bigwing_restrict_rest_api" type="radio" value="none"<?php checked( $restrict, 'none' ); ?> />
+		<?php esc_html_e( 'Publicly accessible', 'bigwing' ); ?>
 	</label></p>
 </fieldset>
 	<?php
@@ -124,7 +124,7 @@ function user_can_access_rest_api( $user_id = 0 ) {
 }
 
 /**
- * Sanitize the `tenup_restrict_rest_api` setting.
+ * Sanitize the `bigwing_restrict_rest_api` setting.
  *
  * @param  string $value Current restriction.
  * @return string

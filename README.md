@@ -1,10 +1,8 @@
-# 10up Experience Plugin [![Build Status](https://travis-ci.org/10up/10up-experience.svg?branch=master)](https://travis-ci.org/10up/10up-experience)
+# BigWing Experience Plugin
 
-The 10up Experience plugin configures WordPress to better protect and inform our clients, aligned to 10up’s best practices. It is not meant as a general-distribution plugin and does not have an open development process, but is available for public perusal.
+The BigWing Experience plugin configures WordPress to better protect and inform our clients, aligned to BigWing’s best practices. It is not meant as a general-distribution plugin and does not have an open development process, but is available for public perusal.
 
-<p align="center">
-<a href="http://10up.com/contact/"><img src="https://10updotcom-wpengine.s3.amazonaws.com/uploads/2016/10/10up-Github-Banner.png" width="850"></a>
-</p>
+This is a fork of the original 10up Experience Plugin, and we are extremely grateful for their work on this.
 
 ## Requirements
 
@@ -13,7 +11,7 @@ The 10up Experience plugin configures WordPress to better protect and inform our
 
 ## Install
 
-1. Clone or [download](https://github.com/10up/10up-experience/archive/master.zip) and extract the plugin into `wp-content/plugins`. Make sure you use the `master` branch which contains the latest stable release.
+1. Clone or [download](https://github.com/bigwing/bigwing-experience/archive/master.zip) and extract the plugin into `wp-content/plugins`. Make sure you use the `master` branch which contains the latest stable release.
 1. Activate the plugin via the dashboard or WP-CLI.
 1. Updates use the built-in WordPress update system to pull from GitHub releases.
 
@@ -22,6 +20,9 @@ The 10up Experience plugin configures WordPress to better protect and inform our
 This plugin requires no configuration.
 
 ## Changelog
+
+### 1.5
+* Forked from 10up Experience and modified for BigWing.
 
 ### 1.4
 * If plugin updates via dashboard are disabled, still show notifcation that an update exists.
@@ -37,7 +38,7 @@ This plugin requires no configuration.
 * Ensure plugin deactivation message linebreaks are displayed correctly
 
 ### 1.1
-* Add `tenup_experience_remove_stream_menu_item` filter
+* Add `bigwing_experience_remove_stream_menu_item` filter
 * Add `composer.json`
 * Add `editorconfig`
 * Coding standard fixes

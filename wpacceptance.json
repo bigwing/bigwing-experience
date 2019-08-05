@@ -1,5 +1,5 @@
 {
-    "name": "10up-experience",
+    "name": "bigwing-experience",
     "exclude": [
       "node_modules"
     ],
@@ -7,16 +7,16 @@
         "./tests/wpa/*.php"
     ],
     "enforce_clean_db": false,
-    "project_path": "%WP_ROOT%/wp-content/plugins/10up-experience",
+    "project_path": "%WP_ROOT%/wp-content/plugins/bigwing-experience",
     "environment_instructions": [
       [
-        "install wordpress where version is 4.9 and url is http://10upexperience.test",
-        "activate plugin where name is 10up-experience",
+        "install wordpress where version is 4.9 and url is http://bigwingexperience.test",
+        "activate plugin where name is bigwing-experience",
         "install theme where name is twentyseventeen"
       ],
       [
-        "install wordpress where url is http://10upexperience.test",
-        "activate plugin where name is 10up-experience",
+        "install wordpress where url is http://bigwingexperience.test",
+        "activate plugin where name is bigwing-experience",
         "install theme where name is twentynineteen"
       ]
     ]

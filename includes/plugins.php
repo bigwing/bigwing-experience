@@ -2,10 +2,10 @@
 /**
  * Plugin extension functionality
  *
- * @package  10up-experience
+ * @package  bigwing-experience
  */
 
-namespace tenup;
+namespace bigwing;
 
 /**
  * Start plugin customizations
@@ -21,9 +21,9 @@ function plugin_customizations() {
 	 *
 	 * @since 1.1.0
 	 *
-	 * @param bool $tenup_experience_remove_stream_menu_item Whether to remove menu item. Default is true.
+	 * @param bool $bigwing_experience_remove_stream_menu_item Whether to remove menu item. Default is true.
 	 */
-	$remove_menu_item = apply_filters( 'tenup_experience_remove_stream_menu_item', true );
+	$remove_menu_item = apply_filters( 'bigwing_experience_remove_stream_menu_item', true );
 
 	if ( is_plugin_active( 'stream/stream.php' ) && $remove_menu_item ) {
 
@@ -44,14 +44,14 @@ function plugin_customizations() {
 add_action( 'admin_init', __NAMESPACE__ . '\plugin_customizations' );
 
 /**
- * Add 10up suggested tab to plugins install screen
+ * Add BigWing suggested tab to plugins install screen
  *
  * @param array $tabs Array of tabs.
  * @return mixed
  */
-function tenup_plugin_install_link( $tabs ) {
+function bigwing_plugin_install_link( $tabs ) {
 	$new_tabs = array(
-		'tenup' => esc_html__( '10up Suggested', 'tenup' ),
+		'bigwing' => esc_html__( 'BigWing Suggested', 'bigwing' ),
 	);
 
 	foreach ( $tabs as $key => $value ) {
@@ -60,10 +60,10 @@ function tenup_plugin_install_link( $tabs ) {
 
 	return $new_tabs;
 }
-add_filter( 'install_plugins_tabs', __NAMESPACE__ . '\tenup_plugin_install_link' );
+add_filter( 'install_plugins_tabs', __NAMESPACE__ . '\bigwing_plugin_install_link' );
 
 /**
- * Filter the arguments passed to plugins_api() for 10up suggested page
+ * Filter the arguments passed to plugins_api() for BigWing suggested page
  *
  * @param array $args Plugin arguments passed to api.
  * @return array
@@ -78,17 +78,17 @@ function filter_install_plugin_args( $args ) {
 			'icons'           => true,
 		),
 		'locale'   => get_user_locale(),
-		'user'     => '10up',
+		'user'     => 'bigwing',
 	);
 
 	return $args;
 }
-add_filter( 'install_plugins_table_api_args_tenup', __NAMESPACE__ . '\filter_install_plugin_args' );
+add_filter( 'install_plugins_table_api_args_bigwing', __NAMESPACE__ . '\filter_install_plugin_args' );
 
 /**
- * Setup 10up suggested plugin display table
+ * Setup BigWing suggested plugin display table
  */
-add_action( 'install_plugins_tenup', 'display_plugins_table' );
+add_action( 'install_plugins_bigwing', 'display_plugins_table' );
 
 /**
  * Add admin notice
@@ -99,7 +99,7 @@ function add_admin_notice() {
 }
 
 /**
- * Warn user when installing non-10up suggested plugins
+ * Warn user when installing non-BigWing suggested plugins
  */
 function plugin_install_warning() {
 	?>
@@ -108,9 +108,9 @@ function plugin_install_warning() {
 			<?php
 				echo wp_kses_post(
 					sprintf(
-						// translators: %s is a link to the 10up Suggested plugins screen
-						__( "Some plugins may affect display, performance, and reliability. Please consider <a href='%s'>10up Suggestions</a> and consult your site team.", 'tenup' ),
-						esc_url( network_admin_url( 'plugin-install.php?tab=tenup' ) )
+						// translators: %s is a link to the BigWing Suggested plugins screen
+						__( "Some plugins may affect display, performance, and reliability. Please consider <a href='%s'>BigWing Suggestions</a> and consult your site team.", 'bigwing' ),
+						esc_url( network_admin_url( 'plugin-install.php?tab=bigwing' ) )
 					)
 				);
 			?>
@@ -124,6 +124,7 @@ add_action( 'install_plugins_pre_favorites', __NAMESPACE__ . '\add_admin_notice'
 add_action( 'install_plugins_pre_beta', __NAMESPACE__ . '\add_admin_notice' );
 add_action( 'install_plugins_pre_search', __NAMESPACE__ . '\add_admin_notice' );
 add_action( 'install_plugins_pre_dashboard', __NAMESPACE__ . '\add_admin_notice' );
+
 /**
  * Add a "learn more" link to the plugin row that points to the admin page.
  *
@@ -135,13 +136,15 @@ add_action( 'install_plugins_pre_dashboard', __NAMESPACE__ . '\add_admin_notice'
  * @param string $status      Status of the plugin. Defaults are 'All', 'Active',
  *                            'Inactive', 'Recently Activated', 'Upgrade', 'Must-Use',
  *                            'Drop-ins', 'Search'.
+ *
+ * @return array The filtered plugin meta.
  */
 function plugin_meta( $plugin_meta, $plugin_file, $plugin_data, $status ) {
-	if ( '10up-experience/10up-experience.php' !== $plugin_file ) {
+	if ( 'bigwing-experience/bigwing-experience.php' !== $plugin_file ) {
 		return $plugin_meta;
 	}
 
-	$plugin_meta[] = '<a href="' . esc_url( admin_url( 'admin.php?page=10up-about' ) ) . '">' . esc_html__( 'Learn more', 'tenup' ) . '</a>';
+	$plugin_meta[] = '<a href="' . esc_url( admin_url( 'admin.php?page=bigwing-about' ) ) . '">' . esc_html__( 'Learn more', 'bigwing' ) . '</a>';
 	return $plugin_meta;
 }
 add_filter( 'plugin_row_meta', __NAMESPACE__ . '\plugin_meta', 100, 4 );
@@ -152,11 +155,11 @@ add_filter( 'plugin_row_meta', __NAMESPACE__ . '\plugin_meta', 100, 4 );
  * @return void
  */
 function plugin_deactivation_warning() {
-	$message = esc_html__( "Warning: This plugin provides additional enterprise-grade protective measures such as REST API security and disabling file editing in the dashboard.\n\nAre you sure you want to deactivate?", 'tenup' );
+	$message = esc_html__( "Warning: This plugin provides additional enterprise-grade protective measures such as REST API security and disabling file editing in the dashboard.\n\nAre you sure you want to deactivate?", 'bigwing' );
 	?>
 <script type="text/javascript">
 jQuery( document ).ready( function( $ ) {
-	$( '.wp-list-table.plugins tr[data-slug="10up-experience"] .deactivate' ).on( 'click', function( e ) {
+	$( '.wp-list-table.plugins tr[data-slug="bigwing-experience"] .deactivate' ).on( 'click', function( e ) {
 		if ( ! window.confirm( '<?php echo esc_js( $message ); ?>' ) ) {
 			e.preventDefault();
 		}
@@ -193,6 +196,8 @@ function set_plugin_update_actions() {
  *
  * @param string $file        Plugin basename.
  * @param array  $plugin_data Plugin information.
+ *
+ * @return bool False if plugin isn't found in the update list.
  */
 function set_custom_update_notification( $file, $plugin_data ) {
 	$current = get_site_transient( 'update_plugins' );
@@ -213,7 +218,7 @@ function set_custom_update_notification( $file, $plugin_data ) {
 		'strong'  => array(),
 	);
 
-	// @var WP_Plugins_List_Table $wp_list_table
+	/** @var \WP_Plugins_List_Table $wp_list_table */
 	$wp_list_table = _get_list_table( 'WP_Plugins_List_Table' );
 
 	if ( is_network_admin() ) {
@@ -232,7 +237,7 @@ function set_custom_update_notification( $file, $plugin_data ) {
 	);
 
 	printf(
-		esc_html__( 'There is a new version of %s available. ' ),
+		esc_html__( 'There is a new version of %s available.', 'bigwing' ),
 		wp_kses( $plugin_data['Name'], $plugins_allowedtags )
 	);
 

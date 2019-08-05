@@ -2,7 +2,7 @@
 /**
  * Test plugin install functionality
  *
- * @package 10up-experience
+ * @package bigwing-experience
  */
 
 /**
@@ -11,16 +11,16 @@
 class PluginsTest extends \WPAcceptance\PHPUnit\TestCase {
 
 	/**
-	 * @testdox I see 10up suggested plugins
+	 * @testdox I see BigWing suggested plugins
 	 */
-	public function test10upSuggestedWorking() {
+	public function testBigWingSuggestedWorking() {
 		$I = $this->openBrowserPage();
 
 		$I->loginAs( 'admin' );
 
 		$I->moveTo( 'wp-admin/plugin-install.php' );
 
-		$I->seeLink( '10up Suggested' );
+		$I->seeLink( 'BigWing Suggested' );
 
 		// Make sure ElasticPress is shown since this is definitely suggested
 
@@ -36,7 +36,7 @@ class PluginsTest extends \WPAcceptance\PHPUnit\TestCase {
 
 		$I->loginAs( 'admin' );
 
-		$I->moveTo( 'http://10upexperience.test/wp-admin/plugin-install.php?tab=popular' );
+		$I->moveTo( 'http://bigwingexperience.test/wp-admin/plugin-install.php?tab=popular' );
 
 		$I->seeText( 'Some plugins may affect display, performance, and reliability' );
 	}

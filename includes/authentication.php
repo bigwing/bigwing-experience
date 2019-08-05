@@ -2,10 +2,10 @@
 /**
  * Authentication functionality
  *
- * @package  10up-experience
+ * @package  bigwing-experience
  */
 
-namespace tenup;
+namespace bigwing;
 
 /**
  * Prevent users from authenticating if they are using a weak password
@@ -25,10 +25,10 @@ function prevent_weak_password_auth( $user, $username, $password ) {
 			'Auth Error',
 			sprintf(
 				'%s <a href="%s">%s</a> %s',
-				__( 'Please', 'tenup' ),
+				__( 'Please', 'bigwing' ),
 				esc_url( wp_lostpassword_url() ),
-				__( 'reset your password', 'tenup' ),
-				__( 'in order to meet current security measures.', 'tenup' )
+				__( 'reset your password', 'bigwing' ),
+				__( 'in order to meet current security measures.', 'bigwing' )
 			)
 		);
 	}

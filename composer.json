@@ -1,27 +1,32 @@
 {
-  "name": "10up/10up-experience",
-  "description": "The 10up Experience plugin configures WordPress to better protect and inform clients, aligned to 10up's best practices",
+  "name": "bigwing/bigwing-experience",
+  "description": "The BigWing Experience plugin configures WordPress to better protect and inform clients, aligned to BigWing's best practices",
   "version": "1.5",
   "minimum-stability": "dev",
   "type": "wordpress-plugin",
   "keywords": [
     "wordpress",
-    "10up"
+    "bigwing"
   ],
-  "homepage": "https://github.com/10up/10up-experience",
-  "license": ["GPL-2.0-only"],
+  "homepage": "https://github.com/bigwing/bigwing-experience",
+  "license": "GPL-2.0-only",
   "authors": [
     {
       "name": "10up",
       "homepage": "https://10up.com/"
+    },
+    {
+      "name": "BigWing",
+      "homepage": "https://BigWing.com/"
     }
   ],
   "support": {
-    "issues": "https://github.com/10up/10up-experience",
-    "source": "https://github.com/10up/10up-experience"
+    "issues": "https://github.com/bigwing/bigwing-experience",
+    "source": "https://github.com/bigwing/bigwing-experience"
   },
   "require": {
-    "php": ">=5.3"
+    "php": ">=5.3",
+    "yahnis-elsts/plugin-update-checker": "v4.7"
   },
   "require-dev": {
     "10up/phpcs-composer": "dev-master",

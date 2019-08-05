@@ -1,4 +1,4 @@
-.tenup-badge {
+.bigwing-badge {
 	background: url('../img/logo.png') no-repeat top left;
 	background-size: cover;
 	-webkit-background-size: cover;
@@ -23,7 +23,7 @@
   only screen and (        min-device-pixel-ratio: 2),
   only screen and (                min-resolution: 192dppx),
   only screen and (                min-resolution: 2dppx) {
-	.tenup-badge {
+	.bigwing-badge {
 		background: url('../img/logo@2x.png') no-repeat top left;
 		background-size: 110px 126px;
 		-webkit-background-size: 110px 126px;
@@ -75,7 +75,7 @@
 	.about-wrap h1 {
 		padding-right: 55px;
 	}
-	.tenup-badge {
+	.bigwing-badge {
 		width: 55px;
 		height: 63px;
 	}

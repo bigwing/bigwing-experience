@@ -2,13 +2,13 @@
 /**
  * Gutenberg functionality customizations
  *
- * @package  10up-experience
+ * @package  bigwing-experience
  */
 
-namespace tenup;
+namespace bigwing;
 
 /**
- * Register 10up Gutenberg setting.
+ * Register BigWing Gutenberg setting.
  */
 function disable_gutenberg_editor_setting() {
 
@@ -21,7 +21,7 @@ function disable_gutenberg_editor_setting() {
 
 	add_settings_field(
 		get_disable_gutenberg_key(),
-		__( 'Use Classic Editor', 'tenup' ),
+		__( 'Use Classic Editor', 'bigwing' ),
 		__NAMESPACE__ . '\gutenberg_settings_ui',
 		'writing',
 		'default',
@@ -34,7 +34,7 @@ function disable_gutenberg_editor_setting() {
 add_action( 'admin_init', __NAMESPACE__ . '\disable_gutenberg_editor_setting' );
 
 /**
- * Display UI for 10up custom Gutenberg settings.
+ * Display UI for BigWing custom Gutenberg settings.
  *
  * @return void
  */
@@ -43,11 +43,11 @@ function gutenberg_settings_ui() {
 
 	?>
 	<fieldset>
-		<legend class="screen-reader-text"><?php esc_html_e( 'Gutenberg Editor Settings', 'tenup' ); ?></legend>
+		<legend class="screen-reader-text"><?php esc_html_e( 'Gutenberg Editor Settings', 'bigwing' ); ?></legend>
 		<p>
 			<input id="disable-gutenberg-editor" name="<?php echo esc_attr( get_disable_gutenberg_key() ); ?>" type="checkbox" value="1" <?php checked( $disable_editor, 1 ); ?> />
 		</label></p>
-		<p class="description"><?php esc_html_e( 'Disables Gutenberg, the new editor introduced in WordPress 5.0, in favor of the prior writing experience.', 'tenup' ); ?></p>
+		<p class="description"><?php esc_html_e( 'Disables Gutenberg, the new editor introduced in WordPress 5.0, in favor of the prior writing experience.', 'bigwing' ); ?></p>
 	</fieldset>
 	<?php
 }
@@ -56,7 +56,7 @@ function gutenberg_settings_ui() {
  * Get the key for disabling Gutenberg
  */
 function get_disable_gutenberg_key() {
-	return 'tenup_disable_gutenberg';
+	return 'bigwing_disable_gutenberg';
 }
 
 /**

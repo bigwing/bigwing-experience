@@ -2,13 +2,13 @@
 /**
  * Author customizations
  *
- * @package  10up-experience
+ * @package  bigwing-experience
  */
 
-namespace tenup;
+namespace bigwing;
 
 /**
- * Check to see if author archive page should be disabled for 10up user accounts
+ * Check to see if author archive page should be disabled for BigWing user accounts
  */
 function maybe_disable_author_archive() {
 
@@ -20,11 +20,11 @@ function maybe_disable_author_archive() {
 	$author             = get_queried_object();
 	$current_domain     = parse_url( get_site_url(), PHP_URL_HOST );
 
-	// Domain names that are whitelisted allowed to index 10up users to be indexed
+	// Domain names that are whitelisted allowed to index BigWing users to be indexed
 	$whitelisted_domains = [
-		'10up.com',
-		'elasticpress.io',
-		'10uplabs.com',
+		'bigwing.com',
+		'bigwing.io',
+		'bigwingmanager.com',
 	];
 
 	// Perform partial match on domains to catch subdomains or variation of domain name
@@ -35,17 +35,17 @@ function maybe_disable_author_archive() {
 		}
 	);
 
-	// If the query object doesn't have a user e-mail address or the filter is allowing 10up authors, bail
+	// If the query object doesn't have a user email address or the filter is allowing BigWing authors, bail
 	if ( ! empty( $filtered_domains ) ||
 		empty( $author->data->user_email ) ||
-		true === apply_filters( 'tenup_experience_allow_tenupauthor_pages', false ) ) {
+		true === apply_filters( 'bigwing_experience_allow_bigwing_author_pages', false ) ) {
 
 		return;
 
 	}
 
-	// E-mail addresses containing 10up.com (get10up.com inclusive) will be filtered out on the front-end
-	if ( false !== stripos( $author->data->user_email, '10up.com' ) ) {
+	// E-mail addresses containing bigwing.com will be filtered out on the front-end
+	if ( false !== stripos( $author->data->user_email, 'bigwing.com' ) ) {
 		$is_author_disabled = true;
 	}
 

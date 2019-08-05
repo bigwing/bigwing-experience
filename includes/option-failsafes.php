@@ -2,10 +2,10 @@
 /**
  * Required option failsafes
  *
- * @package  10up-experience
+ * @package  bigwing-experience
  */
 
-namespace tenup;
+namespace bigwing;
 
 /**
  * Ensures a list of required options have failsafes in place.
@@ -28,7 +28,7 @@ function required_option_failsafes() {
 	 *
 	 * @param array $required_options An array of required option keys.
 	 */
-	$required_options = apply_filters( 'tenup_experience_required_options', [ 'siteurl', 'home', 'wp_user_roles', 'rewrite_rules' ] );
+	$required_options = apply_filters( 'bigwing_experience_required_options', [ 'siteurl', 'home', 'wp_user_roles', 'rewrite_rules' ] );
 
 	foreach ( $required_options as $option ) {
 		add_filter( "default_option_{$option}", __NAMESPACE__ . '\\require_option_failsafe', 10, 3 );
@@ -64,7 +64,7 @@ function require_option_failsafe( $default, $option, $passed_default ) {
 	 * @param int    $max_age The max age in seconds, default 10s.
 	 * @param string $option  The name of the option that is being checked.
 	 */
-	$max_age = apply_filters( 'tenup_experience_required_option_max_age', 10, $option );
+	$max_age = apply_filters( 'bigwing_experience_required_option_max_age', 10, $option );
 
 	// If we checked less than x seconds ago, return whatever we have.
 	if ( $max_age >= $time_since ) {

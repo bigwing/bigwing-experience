@@ -2,7 +2,7 @@
 /**
  * Menu tests
  *
- * @package 10up-experience
+ * @package bigwing-experience
  */
 
 /**
@@ -11,12 +11,12 @@
 class MenuTest extends \WPAcceptance\PHPUnit\TestCase {
 
 	/**
-	 * @testdox I see 10up logo in admin bar
+	 * @testdox I see BigWing logo in admin bar
 	 */
-	public function testAdminBar10upLogo() {
+	public function testAdminBarBigWingLogo() {
 		$I = $this->openBrowserPage();
 
 		$I->loginAs( 'admin' );
-		$I->seeElement( '#wp-admin-bar-10up' );
+		$I->seeElement( '#wp-admin-bar-bigwing' );
 	}
 }

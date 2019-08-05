@@ -2,7 +2,7 @@
 /**
  * Test standard WP functionality
  *
- * @package 10up-experience
+ * @package bigwing-experience
  */
 
 /**
